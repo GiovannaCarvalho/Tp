@@ -53,26 +53,27 @@ void binto(char *numero_somente, int base2,char *numero) {
 		int cont = 0;
 		int i;
 		printf("entrei uhu\n");
-		for (int i = 0; numero[i] != ' '; i++) {
-		    printf("%d",i);
+		for (i = 0; numero[i] != ' '; i++) {
+		    printf("%d i\n",i);
 			cont++;
-			printf("%d",cont);
+			printf("%d cont\n",cont);
 		}
-		aux/*[cont];*/ = (int*)malloc(sizeof(int) * cont); //mesma coisa que "int aux[cont];"*/
+		int aux[cont]; /*= (int*)malloc(sizeof(int) * cont); //mesma coisa que "int aux[cont];"*/
 		for (i = 0; i < cont; i++) {
 			aux[i] = numero_somente[i];
+			printf("%iauxiliar\n",aux[i]);
 		}
 		for (i = 0; i < cont; i++) {
-		    printf("entrei uhuuu");
-		    while(numero_somente[i]!=0){
-			    reminder=numero_somente[i]%10;
-			    printf("%d:",reminder);
+		    printf("entrei uhuuu\n");
+		    while(numero[i]!=0){
+			    reminder=aux[i]%10;
+			    printf("reminder:%d\n",reminder);
 			    octal=octal+reminder*j;
-			    printf("%d:",octal);
+			    printf("::octal: %d\n",octal);
 			    j=j*2;
-			    printf("%d:",j);
-			    numero_somente[i]=numero_somente[i]/10;
-			    printf("%s:",numero_somente[i]);
+			    printf(":::j%d\n",j);
+			    aux[i]=aux[i]/10;
+			    printf("%s::::numero_somente %s\n",aux[i]);
 		    }
 		}
 	}
@@ -162,9 +163,11 @@ int main() {
 	char numero[50];
 	int basen, baset, tam;
 	float c, f;
+	setbuf(stdin, NULL);
 	printf("Programa de covers�o de Bases\n");
 	printf("Funcionamento: \n");
 	printf("(sinal)(numero)\"ESPA�O\"(base do numero)\"ESPA�O\"(base a converter): \n");
+	setbuf(stdin, NULL);
 	fgets(numero, 50, stdin);
 	decide(numero);
 	//printf("%s\n",numero );
@@ -175,6 +178,6 @@ int main() {
 	fputs(numero, stdout);
 	//printf(" base: %i base t:%i\n",basen,baset);
 	*/
-	//system("pause");
+	system("pause");
 	return 0;
 }
